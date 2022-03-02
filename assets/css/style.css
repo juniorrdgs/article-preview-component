@@ -17,39 +17,54 @@
 
 body {
     background-color: var(--lightGrayishBlue);
-    min-height: 100vh;
-    margin: auto;
+    padding-left: 15px;
 }
 
 main {
     max-width: 1440px;
-    width: 100%;
+    width: 730px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
     border-radius: 10px;
-    margin-top: 150px;
+    margin-top: 260px;
+    box-shadow: 0px 5px 10px hsla(212, 23%, 69%, 0.5);
 }
 
 aside {
+    background-color: #fff;
     background-image: url('../images/drawers.jpg');
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 300px;
-    height: 300px;
+    width: 285px;
+    height: 280px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
 article {
-    width: 500px;
-    height: 300px;
+    flex: 1;
+    height: 280px;
     background-color: #fff;
-    padding: 50px;
+    padding: 34px 41px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+article h1 {
+    font-size: 20px;
+    letter-spacing: 0.23px;
+    margin-bottom: 15px;
+    color: var(--veryDarkGrayishBlue);
+}
+
+article span {
+    letter-spacing: 0.1px;
+    line-height: 1.5;
+    color: var(--desaturatedDarkBlue);
 }
 
 article .user {
@@ -57,26 +72,161 @@ article .user {
     height: auto;
     display: flex;
     align-items: center;
+    margin-top: 20px;
 }
 article .user .avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    margin-right: 17px;
 }
 
 article .user .share {
-    line-height: 17px;
-    text-align: center;
-    width: 30px;
-    height: 30px;
+    position: absolute;
+    z-index: 20;
+    right: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
     padding: 5px;
     background-color: var(--lightGrayishBlue);
     border-radius: 50%;
 }
 
-article .user .share .modal {
-    /*display: none;*/
-    width: 100px;
-    height: 50px;
+article .user .share.active {
+    background-color: var(--desaturatedDarkBlue);
+}
+
+article .user .share svg{
+    cursor: pointer;
+}
+
+.fillClass.active{
+    fill: var(--lightGrayishBlue);
+}
+
+article .user .modal {
+    position: absolute;
+    z-index: -1;
+    top: -85px;
+    width: 250px;
+    height: 55px;
     background-color: var(--veryDarkGrayishBlue);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 0 45px;
+}
+
+article .user .modal.hideModal {
+    display: none;
+}
+
+article .user .modal span {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+article .user .modal.showModal {
+    display: flex;
+    z-index: -1;
+}
+
+article .user .modal::after {
+    content: '';
+    display: block;
+    position: absolute;
+    margin-top: 84px;
+    border: 15px solid;
+    border-color: var(--veryDarkGrayishBlue) transparent transparent transparent;
+}
+
+article .user .modal img {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+    article .user .share {
+        right: 200px;
+    }
+}
+
+@media(Max-width: 800px) {
+    main {
+        max-width: 800px;
+        width: 330px;
+        height: auto;
+        margin-top: 75px;
+        flex-direction: column;
+    }
+
+    aside {
+        width: 100%;
+        height: 200px;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 10px;
+        background-position: center center;
+    }
+
+    article {
+        width: 100%;
+        height: 130px;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 10px;
+        padding: 35px 32px 20px 32px;
+    }
+
+    article h1 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    article span {
+        letter-spacing: 0.2px;
+    }
+
+    article .user {
+        margin-top: 30px;
+    }
+
+    article .user .share {
+        right: 245px;
+    }
+
+    article .user .modal {
+        top: -19px;
+        left: -264px;
+        width: 330px;
+        height: 75px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    article .user .modal::after {
+        display: none;
+    }
+
+    article .user .modal img:nth-last-child(1) {
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 425px) {
+    article .user .share {
+        right: 80px;
+    }
+}
+
+@media (max-width: 375px) {
+    article .user .share {
+        right: 50px;
+    }
 }
